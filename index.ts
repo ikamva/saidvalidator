@@ -2,13 +2,17 @@
  * Validates ID
  *
  * How SA ID Works
- * The first six numbers are the birth date of the person in YYMMDD format - e.g ID number starts 820716.
- * The next four are a gender, 5000 and above is male and below 5000 is female - e.g 6006.
- * The next number is the country ID, 0 is South Africa and 1 is not.
- * The second last number used to be a racial identifier but now means nothing.
- * The last number is a control number. Which verifies the rest of the number.
  *
- * Ref: https://www.sadev.co.za/content/what-south-african-id-number-made
+ * YYMMDDGSSSCAZ
+ *
+ * YYMMDD : Date of birth (DOB)
+ * G : Gender. 0-4 Female; 5-9 Male
+ * SSS : Sequence No. for DOB/G combination
+ * C : Citizenship. 0 SA; 1 Other
+ * A : Usually 8, or 9 but can be other values
+ * Z : Calculated control (check) digit
+ *
+ * Ref: https://dirkstrauss.com/south-african-id-number-validation-in-c/
  *
  */
 export default class SAIDValidator {
