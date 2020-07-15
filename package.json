@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Validates South African ID",
   "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc index.ts -d && yarn publish"
+  },
   "author": "Sivuyile Magutywa",
   "license": "MIT",
   "maintainers": [
