@@ -1,5 +1,15 @@
 /**
  * Validates ID
+ *
+ * How SA ID Works
+ * The first six numbers are the birth date of the person in YYMMDD format - e.g ID number starts 820716.
+ * The next four are a gender, 5000 and above is male and below 5000 is female - e.g 6006.
+ * The next number is the country ID, 0 is South Africa and 1 is not.
+ * The second last number used to be a racial identifier but now means nothing.
+ * The last number is a control number. Which verifies the rest of the number.
+ *
+ * Ref: https://www.sadev.co.za/content/what-south-african-id-number-made
+ *
  */
 export default class SAIDValidator {
   private idNumber: number;
@@ -69,9 +79,3 @@ export default class SAIDValidator {
 
   private isEqualToControl() {}
 }
-
-const test1 = new SAIDValidator(8911206006082);
-console.log(test1.validate());
-
-const test2 = new SAIDValidator(8911206006082);
-console.log(test2.validate());
