@@ -31,7 +31,10 @@ export default class SAIDValidator {
     // Split ID number into an array
     const idNumberArray = this.idNumber.toString().split("", 12);
 
-    // Get Control number
+    /**
+     * Get Control number
+     * The last digit is a control number
+     */
     this.controlNumber = +this.idNumber.toString().split("")[12];
 
     // Get odd and even values
