@@ -1,0 +1,17 @@
+{
+  "name": "@ikamva/SAIDValidator",
+  "version": "1.0.0",
+  "description": "Validates South African ID",
+  "main": "index.js",
+  "author": "Sivuyile Magutywa",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Sivuyile Magutywa",
+      "email": "s.magutywa@kernet.co.za"
+    }
+  ],
+  "keywords": [
+    "SA ID"
+  ]
+}
