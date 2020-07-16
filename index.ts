@@ -80,6 +80,4 @@ export default class SAIDValidator {
     // Check if is equal to control
     return hasControl == this.controlNumber;
   }
-
-  private isEqualToControl() {}
 }
