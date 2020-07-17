@@ -1,11 +1,12 @@
 {
   "name": "@ikamva/saidvalidator",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Validates South African ID",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/index.js",
+  "types": "libs",
   "scripts": {
-    "build": "tsc index.ts -d && yarn publish"
+    "build": "tsc -p .",
+    "build:publish": "yarn build && yarn publish"
   },
   "author": "Sivuyile Magutywa",
   "license": "MIT",
@@ -17,5 +18,8 @@
   ],
   "keywords": [
     "SA ID"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
 }
