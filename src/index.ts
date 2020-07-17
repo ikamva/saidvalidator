@@ -20,7 +20,7 @@ export default class SAIDValidator {
   private totalOdd = 0;
   private totalEven = 0;
   private totalMergedEven = "";
-  private controlNumber: number;
+  private controlNumber: number = 0;
 
   /**
    * This takes id number as an argument
