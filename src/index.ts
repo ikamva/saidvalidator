@@ -16,42 +16,47 @@
  *
  */
 export default class SAIDValidator {
-  private idNumber: number;
+  // private idNumber: number;
   private totalOdd = 0;
   private totalEven = 0;
   private totalMergedEven = "";
   private controlNumber: number = 0;
+  private calculatedControlNumber: number = 0;
 
   /**
    * This takes id number as an argument
    * @param idNumber
    */
   constructor(idNumber: number) {
-    this.idNumber = idNumber;
+    this.init(idNumber);
   }
 
   /**
    * Validate ID Number
    */
   validate() {
-    return this.calculateOddEven();
+    return this.calculatedControlNumber === this.controlNumber;
   }
 
   /**
    * Calculates Odd and Even numbers
    *
    */
-  private calculateOddEven(): boolean {
+  private init(idNumber: number): void {
     // Split ID number into an array
-    const idNumberArray = this.idNumber.toString().split("", 12);
+    const idNumberArray = idNumber.toString().split("", 12);
 
     /**
      * Get Control number
      * The last digit is a control number
      */
-    this.controlNumber = +this.idNumber.toString().split("")[12];
+    this.controlNumber = +idNumber.toString().split("")[12];
 
     // Get odd and even values
+    this.setValidate(idNumberArray);
+  }
+
+  private setValidate(idNumberArray: string[]) {
     idNumberArray.forEach((value, index) => {
       // If Odd
       if (index % 2 == 0) {
@@ -75,9 +80,6 @@ export default class SAIDValidator {
     const compareControl = this.totalEven + this.totalOdd;
 
     // Get Calculated Control
-    const hasControl = 10 - +compareControl.toString().split("")[1];
-
-    // Check if is equal to control
-    return hasControl == this.controlNumber;
+    this.calculatedControlNumber = 10 - +compareControl.toString().split("")[1];
   }
 }
