@@ -1,6 +1,6 @@
 {
   "name": "@ikamva/saidvalidator",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Validates South African ID",
   "main": "lib/index.js",
   "types": "libs",
