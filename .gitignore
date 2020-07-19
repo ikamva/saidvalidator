@@ -1,8 +1,19 @@
 # Ignore
-/.vscode
 /node_modules
 /lib
 *.d.ts
 *.d.ts.map
 *.js
 *.js.map
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*

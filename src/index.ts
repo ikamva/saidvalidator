@@ -15,71 +15,65 @@
  * Ref: https://dirkstrauss.com/south-african-id-number-validation-in-c/
  *
  */
-export default class SAIDValidator {
-  // private idNumber: number;
-  private totalOdd = 0;
-  private totalEven = 0;
-  private totalMergedEven = "";
-  private controlNumber: number = 0;
-  private calculatedControlNumber: number = 0;
+let totalOdd = 0;
+let totalEven = 0;
+let totalMergedEven = "";
+let controlNumber: number = 0;
+let calculatedControlNumber: number = 0;
+
+/**
+ * Validate ID Number
+ */
+export const validate = (idNumber: number) => {
+  init(idNumber);
+  return calculatedControlNumber === controlNumber;
+};
+
+/**
+ * Calculates Odd and Even numbers
+ *
+ */
+const init = (idNumber: number) => {
+  // Split ID number into an array
+  const idNumberArray = idNumber.toString().split("", 12);
 
   /**
-   * This takes id number as an argument
-   * @param idNumber
+   * Get Control number
+   * The last digit is a control number
    */
-  constructor(idNumber: number) {
-    this.init(idNumber);
-  }
+  controlNumber = +idNumber.toString().split("")[12];
 
-  /**
-   * Validate ID Number
-   */
-  validate() {
-    return this.calculatedControlNumber === this.controlNumber;
-  }
+  // Get odd and even values
+  setValidate(idNumberArray);
+};
 
-  /**
-   * Calculates Odd and Even numbers
-   *
-   */
-  private init(idNumber: number): void {
-    // Split ID number into an array
-    const idNumberArray = idNumber.toString().split("", 12);
+function setValidate(idNumberArray: string[]) {
+  idNumberArray.forEach((value, index) => {
+    // If Odd
+    if (index % 2 == 0) {
+      totalOdd += +value;
+    } // If even
+    else {
+      // Concatenate all even values
+      totalMergedEven += value;
+    }
+  });
 
-    /**
-     * Get Control number
-     * The last digit is a control number
-     */
-    this.controlNumber = +idNumber.toString().split("")[12];
+  // Get Event Digit and Split
+  getTotalEvenDigits();
 
-    // Get odd and even values
-    this.setValidate(idNumberArray);
-  }
+  // Add all numbers
+  const compareControl = totalEven + totalOdd;
 
-  private setValidate(idNumberArray: string[]) {
-    idNumberArray.forEach((value, index) => {
-      // If Odd
-      if (index % 2 == 0) {
-        this.totalOdd += +value;
-      } // If even
-      else {
-        // Concatenate all even values
-        this.totalMergedEven += value;
-      }
-    });
+  // Get Calculated Control
+  calculatedControlNumber = 10 - +compareControl.toString().split("")[1];
+}
 
-    // Get Event Digit and Split
-    const totalEvenDigit = (+this.totalMergedEven * 2).toString().split("");
+function getTotalEvenDigits() {
+  const totalEvenDigit = (+totalMergedEven * 2).toString().split("");
 
-    // Get total Even numbers
-    totalEvenDigit.forEach((value) => {
-      this.totalEven += +value;
-    });
-
-    // Add all numbers
-    const compareControl = this.totalEven + this.totalOdd;
-
-    // Get Calculated Control
-    this.calculatedControlNumber = 10 - +compareControl.toString().split("")[1];
-  }
+  // Get total Even numbers
+  totalEvenDigit.forEach((value) => {
+    totalEven += +value;
+  });
 }
