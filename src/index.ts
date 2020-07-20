@@ -41,13 +41,13 @@ const init = (idNumber: number) => {
    * Get Control number
    * The last digit is a control number
    */
-  controlNumber = +idNumber.toString().split("")[12];
+  controlNumber = +idNumber.toString().split("")?.[12];
 
   // Get odd and even values
   setValidate(idNumberArray);
 };
 
-function setValidate(idNumberArray: string[]) {
+const setValidate = (idNumberArray: string[]) => {
   idNumberArray.forEach((value, index) => {
     // If Odd
     if (index % 2 == 0) {
@@ -66,10 +66,10 @@ function setValidate(idNumberArray: string[]) {
   const compareControl = totalEven + totalOdd;
 
   // Get Calculated Control
-  calculatedControlNumber = 10 - +compareControl.toString().split("")[1];
+  calculatedControlNumber = 10 - +compareControl.toString().split("")?.[1];
 }
 
-function getTotalEvenDigits() {
+const getTotalEvenDigits = () => {
   const totalEvenDigit = (+totalMergedEven * 2).toString().split("");
 
   // Get total Even numbers
