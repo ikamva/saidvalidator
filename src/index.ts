@@ -34,20 +34,30 @@ export const validate = (idNumber: number) => {
  *
  */
 const init = (idNumber: number) => {
-  // Split ID number into an array
-  const idNumberArray = idNumber.toString().split("", 12);
-
   /**
    * Get Control number
    * The last digit is a control number
    */
   controlNumber = +idNumber.toString().split("")?.[12];
 
-  // Get odd and even values
-  setValidate(idNumberArray);
+  if (idNumber.toString().length >= 12) {
+    // Reset
+    calculatedControlNumber = 0;
+
+    // Split ID number into an array
+    const idNumberArray = idNumber.toString().split("", 12);
+
+    // Get odd and even values
+    setValidate(idNumberArray);
+  }
 };
 
 const setValidate = (idNumberArray: string[]) => {
+  // Reset
+  totalOdd = 0;
+  totalMergedEven = "";
+  totalEven = 0;
+
   idNumberArray.forEach((value, index) => {
     // If Odd
     if (index % 2 == 0) {
@@ -67,7 +77,7 @@ const setValidate = (idNumberArray: string[]) => {
 
   // Get Calculated Control
   calculatedControlNumber = 10 - +compareControl.toString().split("")?.[1];
-}
+};
 
 const getTotalEvenDigits = () => {
   const totalEvenDigit = (+totalMergedEven * 2).toString().split("");
@@ -76,4 +86,4 @@ const getTotalEvenDigits = () => {
   totalEvenDigit.forEach((value) => {
     totalEven += +value;
   });
-}
+};
