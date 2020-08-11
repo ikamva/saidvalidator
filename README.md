@@ -11,7 +11,7 @@ This package validates South African ID
 Install using npm:
 
 ```
-ng install @ikamva/saidvalidator
+npm install @ikamva/saidvalidator
 ```
 
 Install using yarn:
@@ -26,11 +26,9 @@ yarn add @ikamva/saidvalidator
 ## 👨🏻‍🏫 How to Use
 
 ```ts
-import SAIDValidator from "@ikamva/saidvalidator";
+import { validate } from "@ikamva/saidvalidator";
 
-const validator = new SAIDValidator(88112106006082);
-
-validator.validate(); // false
+const isSAID = validate(8802016006082); // false
 ```
 
 <br>
