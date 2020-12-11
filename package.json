@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "types": "libs",
   "scripts": {
-    "build": "tsc -p .",
-    "build:publish": "yarn build && yarn publish",
+    "build": "tsc -p . -d",
+    "build:publish": "yarn build && yarn np --no-tests",
     "test": "mocha --require ts-node/register --watch-extensions ts 'test/**/*.ts' -w"
   },
   "author": "Sivuyile Magutywa",
@@ -25,6 +25,7 @@
     "@types/mocha": "^8.2.0",
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
+    "np": "^7.0.0",
     "ts-node": "^9.1.1",
     "typescript": "^3.9.7"
   }

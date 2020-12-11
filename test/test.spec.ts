@@ -9,7 +9,7 @@ describe('validate', () => {
     /**
      * Add an valid ID Number here
      */
-    it('should validate ID Number and return true', () => {
-        expect(validate(8913206006082)).to.true
-    })
+    // it('should validate ID Number and return true', () => {
+    //     expect(validate(8913206006082)).to.true
+    // })
 })
