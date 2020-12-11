@@ -26,7 +26,7 @@ yarn add @ikamva/saidvalidator
 ## 👨🏻‍🏫 How to Use
 
 ```ts
-import { validate } from "@ikamva/saidvalidator";
+import validate  from "@ikamva/saidvalidator";
 
 const isSAID = validate(8802016006082); // false
 ```
