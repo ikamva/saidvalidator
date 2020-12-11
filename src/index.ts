@@ -16,13 +16,6 @@
  *
  */
 
-/**
- * Validate ID Number
- */
-export const validate = (idNumber: number) => {
-  return calculateControlNumber(idNumber) === controlNumber(idNumber);
-};
-
 
 /**
    * Get Control number
@@ -85,3 +78,15 @@ const getTotalEven = (mergedEven: string) => {
 
   return even;
 };
+
+
+/**
+ * Validate ID Number
+ * @param idNumber
+ */
+const validate = (idNumber: number) => {
+  return calculateControlNumber(idNumber) === controlNumber(idNumber);
+};
+
+// Export validate function
+export default validate;

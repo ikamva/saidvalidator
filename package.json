@@ -6,7 +6,8 @@
   "types": "libs",
   "scripts": {
     "build": "tsc -p .",
-    "build:publish": "yarn build && yarn publish"
+    "build:publish": "yarn build && yarn publish",
+    "test": "mocha --require ts-node/register --watch-extensions ts 'test/**/*.ts' -w"
   },
   "author": "Sivuyile Magutywa",
   "license": "MIT",
@@ -20,6 +21,11 @@
     "SA ID"
   ],
   "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "ts-node": "^9.1.1",
     "typescript": "^3.9.7"
   }
 }

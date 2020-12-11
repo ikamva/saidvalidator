@@ -1,6 +1,7 @@
 # ignore the .ts files
 *.ts
 /src/*
+/test/*
 # include the .d.ts files
 !*.d.ts
 
