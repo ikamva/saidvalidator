@@ -6,7 +6,7 @@
   "types": "libs",
   "scripts": {
     "build": "tsc -p . -d",
-    "build:publish": "pnpm build && pnpm np",
+    "build:publish": "yarn build && yarn np",
     "test": "mocha --require ts-node/register --watch-extensions ts 'test/**/*.ts' -w"
   },
   "author": "Sivuyile Magutywa",
@@ -21,7 +21,7 @@
     "SA ID"
   ],
   "engines": {
-    "node": "16^"
+    "node": ">=14.0.0 <20.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
