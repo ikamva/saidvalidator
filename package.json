@@ -1,12 +1,12 @@
 {
   "name": "@ikamva/saidvalidator",
-  "version": "0.1.15",
+  "version": "0.2.0",
   "description": "Validates South African ID",
   "main": "lib/index.js",
   "types": "libs",
   "scripts": {
     "build": "tsc -p . -d",
-    "build:publish": "yarn build && yarn np",
+    "build:publish": "pnpm build && pnpm np",
     "test": "mocha --require ts-node/register --watch-extensions ts 'test/**/*.ts' -w"
   },
   "author": "Sivuyile Magutywa",
@@ -20,14 +20,17 @@
   "keywords": [
     "SA ID"
   ],
+  "engines": {
+    "node": "16^"
+  },
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.2.0",
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
-    "np": "^7.0.0",
-    "ts-node": "^9.1.1",
-    "typescript": "^3.9.7"
+    "np": "^8.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   },
   "publishConfig": {
     "access": "public",
