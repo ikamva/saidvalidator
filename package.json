@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Validates South African ID",
   "main": "lib/index.js",
-  "types": "libs",
+  "types": "lib/index.d.ts",
+  "files": [
+    "/lib"
+  ],
   "scripts": {
     "build": "tsc -p . -d",
     "build:publish": "yarn build && yarn np --no-tests",
