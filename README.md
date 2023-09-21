@@ -36,12 +36,12 @@ pnpm add @ikamva/saidvalidator
 import { validateSAID }  from "@ikamva/saidvalidator";
 
 // Get all details if valid
-const saIDData = validateSAID(8802016006082); // {valid: true, gender: 'Male', citizenship: 'SA'}
+const saIDData = validateSAID("8802016006082"); // {valid: true, gender: 'Male', citizenship: 'SA'}
 
 
 // If invalid
 // Gender and Citizenship will be undefined
-const saIDData = validateSAID(8802016006082); // {valid: false}
+const saIDData = validateSAID("8802016006082"); // {valid: false}
 
 ```
 
@@ -50,15 +50,15 @@ const saIDData = validateSAID(8802016006082); // {valid: false}
 import { isSAID }  from "@ikamva/saidvalidator";
 
 // Check if valid sa id only
-const isValid = isSAID(8802016006082); // true
+const isValid = isSAID("8802016006082"); // true
 ```
 
 ### Get Gender and Citizenship 
 ```ts
 import { getCitizenship , getGender }  from "@ikamva/saidvalidator";
 
-const gender = getGender(8802016006082); // Male 
-const citizen = getCitizenship(8802016006082); // SA 
+const gender = getGender("8802016006082"); // Male 
+const citizen = getCitizenship("8802016006082"); // SA 
 ```
 <br>
 

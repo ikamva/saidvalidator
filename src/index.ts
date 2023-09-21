@@ -17,20 +17,17 @@
 /**
  * Get the control number (last digit) of the ID number
  */
-const getControlNumber = (idNumber: number) => parseInt(idNumber.toString().charAt(12));
+const getControlNumber = (idNumber: string) => parseInt(idNumber.charAt(12));
 
 /**
  * Calculate the control number for validation
  */
-const calculateControlNumber = (idNumber: number) => {
+const calculateControlNumber = (idNumber: string) => {
   let totalOdd = 0;
   let totalEven = 0;
 
-  // Convert the ID number to a string for processing
-  const idNumberStr = idNumber.toString();
-
   for (let i = 0; i < 12; i++) {
-    const digit = parseInt(idNumberStr.charAt(i));
+    const digit = parseInt(idNumber.charAt(i));
 
     if (i % 2 === 0) {
       totalOdd += digit;
@@ -54,7 +51,7 @@ const getTotalEven = (digit: number) => {
 /**
  * Determine the gender based on the G digit of the ID number
  */
-const getGender = (idNumber: number) => {
+const getGender = (idNumber: string) => {
   const genderDigit = parseInt(idNumber.toString().charAt(6));
   return genderDigit < 5 ? 'Female' : 'Male';
 };
@@ -62,19 +59,19 @@ const getGender = (idNumber: number) => {
 /**
  * Determine the citizenship based on the C digit of the ID number
  */
-const getCitizenship = (idNumber: number) => {
+const getCitizenship = (idNumber: string) => {
   const citizenshipDigit = parseInt(idNumber.toString().charAt(10));
   return citizenshipDigit === 0 ? 'SA' : 'Other';
 };
 
-const isSAID = (idNumber: number) => {
+const isSAID = (idNumber: string) => {
   return calculateControlNumber(idNumber) === getControlNumber(idNumber);
 }
 
 /**
  * Validate South African ID Number and return a result object
  */
-const validateSAID = (idNumber: number): { valid: boolean; gender?: 'Male' | 'Female'; citizenship?: 'SA' | 'Other' } => {
+const validateSAID = (idNumber: string): { valid: boolean; gender?: 'Male' | 'Female'; citizenship?: 'SA' | 'Other' } => {
   const valid = isSAID(idNumber);
   const gender = getGender(idNumber);
   const citizenship = getCitizenship(idNumber);
