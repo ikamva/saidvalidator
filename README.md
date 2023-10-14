@@ -36,7 +36,7 @@ pnpm add @ikamva/saidvalidator
 import { validateSAID, Validate }  from "@ikamva/saidvalidator";
 
 // Get all details if valid
-const saIDData: Validate = validateSAID("1601016372082"); // {valid: true, gender: 'Male', citizenship: 'SA', dob: '01-01-2016'}
+const saIDData: Validate = validateSAID("1601016372082"); // {valid: true, gender: 'Male', citizenship: 'SA', dob: '01 Jan 2016'}
 
 
 // If invalid
@@ -56,8 +56,8 @@ const isValid = isSAID("1601016372082"); // true
 ```ts
 import { getDOB }  from "@ikamva/saidvalidator";
 
-// returns DD-MM-YYYY or 'Invalid ID'
-const gender = getDOB("1601016372082"); // 01-01-2016 
+// returns DD MMM YYYY or 'Invalid ID'
+const gender = getDOB("1601016372082"); // 01 Jan 2016 
 ```
 
 ### Get Gender 

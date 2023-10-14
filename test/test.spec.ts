@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 describe('validate', () => {
 
-  const idNumber = '1601016372082';
+  const idNumber = '1601178295089';
   const invalidID = '1601016372081'
 
   it('should validate ID Number and return false', () => {
@@ -16,9 +16,9 @@ describe('validate', () => {
     expect(result).to.be.true;
   })
 
-  it('should validate ID Number and return 01-01-2016', () => {
+  it('should validate ID Number and return 17 Jan 2016', () => {
     const result = getDOB(idNumber)
-    expect(result).to.equal('01-01-2016');
+    expect(result).to.equal('17 Jan 2016');
   })
 
 
@@ -43,11 +43,11 @@ describe('validate', () => {
   /**
    * Add an valid ID Number here
    */
-  it('should validate ID Number and return object {valid: true, gender: Male, citizenship: SA, dob: 01-01-2016}', () => {
+  it('should validate ID Number and return object {valid: true, gender: Male, citizenship: SA, dob: 17 Jan 2016}', () => {
     const result = validateSAID(idNumber)
     expect(result.valid).to.be.true;
     expect(result.gender).to.equal('Male');
-    expect(result.dob).to.equal('01-01-2016');
+    expect(result.dob).to.equal('17 Jan 2016');
     expect(result.citizenship).to.equal('SA');
   })
 })

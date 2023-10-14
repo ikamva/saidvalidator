@@ -76,7 +76,13 @@ const getDOB = (idNumber: string, range = 100) => {
   if (year < currentYear)
     century = 2000;
 
-  const dob = `${day}-${month}-${century + year}`
+  const formatter = new Intl.DateTimeFormat('en-ZA', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  })
+
+  const dob = formatter.format(new Date(`${month}-${day}-${century + year}`))
 
   return dob;
 };
