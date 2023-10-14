@@ -33,15 +33,14 @@ pnpm add @ikamva/saidvalidator
 
 ### Get full details
 ```ts
-import { validateSAID }  from "@ikamva/saidvalidator";
+import { validateSAID, Validate }  from "@ikamva/saidvalidator";
 
 // Get all details if valid
-const saIDData = validateSAID("8802016006082"); // {valid: true, gender: 'Male', citizenship: 'SA'}
+const saIDData: Validate = validateSAID("1601016372082"); // {valid: true, gender: 'Male', citizenship: 'SA', dob: '01-01-2016'}
 
 
 // If invalid
-// Gender and Citizenship will be undefined
-const saIDData = validateSAID("8802016006082"); // {valid: false}
+const saIDData: Validate = validateSAID("1601016372081"); // {valid: false, gender: 'Invalid ID', dob: 'Invalid ID', citizenship: 'Invalid ID'}
 
 ```
 
@@ -50,15 +49,31 @@ const saIDData = validateSAID("8802016006082"); // {valid: false}
 import { isSAID }  from "@ikamva/saidvalidator";
 
 // Check if valid sa id only
-const isValid = isSAID("8802016006082"); // true
+const isValid = isSAID("1601016372082"); // true
 ```
 
-### Get Gender and Citizenship 
+### Get D.O.B 
 ```ts
-import { getCitizenship , getGender }  from "@ikamva/saidvalidator";
+import { getDOB }  from "@ikamva/saidvalidator";
 
-const gender = getGender("8802016006082"); // Male 
-const citizen = getCitizenship("8802016006082"); // SA 
+// returns DD-MM-YYYY or 'Invalid ID'
+const gender = getDOB("1601016372082"); // 01-01-2016 
+```
+
+### Get Gender 
+```ts
+import { getGender }  from "@ikamva/saidvalidator";
+
+// returns 'Male' or 'Female' or 'Invalid ID'
+const gender = getGender("1601016372082"); // Male 
+```
+
+### Get Citizenship 
+```ts
+import { getCitizenship }  from "@ikamva/saidvalidator";
+
+// returns 'SA' or 'Other' or 'Invalid ID'
+const citizen = getCitizenship("1601016372082"); // SA 
 ```
 <br>
 

@@ -14,6 +14,8 @@
  * Reference: https://dirkstrauss.com/south-african-id-number-validation-in-c/
  */
 
+import { Validate } from "./models";
+
 /**
  * Get the control number (last digit) of the ID number
  */
@@ -52,14 +54,38 @@ const getTotalEven = (digit: number) => {
  * Determine the gender based on the G digit of the ID number
  */
 const getGender = (idNumber: string) => {
+  if (!isSAID(idNumber)) return 'Invalid ID'
   const genderDigit = parseInt(idNumber.toString().charAt(6));
   return genderDigit < 5 ? 'Female' : 'Male';
+};
+
+/**
+ * Determine the gender based on the G digit of the ID number
+ * DD-MM-YYYY
+ * @param idNumber
+ * @param range years from current year default 100 years
+ */
+const getDOB = (idNumber: string, range = 100) => {
+  if (!isSAID(idNumber)) return 'Invalid ID'
+  let century = 1900;
+  const currentYear = new Date().getFullYear() % range;
+  const year = Number(idNumber.slice(0, 2));
+  const month = idNumber.slice(2, 4);
+  const day = idNumber.slice(4, 6);
+
+  if (year < currentYear)
+    century = 2000;
+
+  const dob = `${day}-${month}-${century + year}`
+
+  return dob;
 };
 
 /**
  * Determine the citizenship based on the C digit of the ID number
  */
 const getCitizenship = (idNumber: string) => {
+  if (!isSAID(idNumber)) return 'Invalid ID'
   const citizenshipDigit = parseInt(idNumber.toString().charAt(10));
   return citizenshipDigit === 0 ? 'SA' : 'Other';
 };
@@ -71,16 +97,18 @@ const isSAID = (idNumber: string) => {
 /**
  * Validate South African ID Number and return a result object
  */
-const validateSAID = (idNumber: string): { valid: boolean; gender?: 'Male' | 'Female'; citizenship?: 'SA' | 'Other' } => {
+const validateSAID = (idNumber: string): Validate => {
   const valid = isSAID(idNumber);
   const gender = getGender(idNumber);
   const citizenship = getCitizenship(idNumber);
+  const dob = getDOB(idNumber);
 
-  return !valid ? { valid } : {
+  return {
     valid,
     gender,
-    citizenship
+    citizenship,
+    dob
   };
 };
 
-export { validateSAID, isSAID, getGender, getCitizenship };
+export { validateSAID, isSAID, getGender, getCitizenship, getDOB };
