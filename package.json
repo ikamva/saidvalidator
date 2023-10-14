@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "tsc -p . -d",
-    "build:publish": "yarn build && yarn np --no-tests",
+    "build:publish": "yarn build && yarn np",
     "test:watch": "mocha --require ts-node/register --watch-extensions ts 'test/**/*.ts' -w"
   },
   "author": "Sivuyile Magutywa",
