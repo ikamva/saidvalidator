@@ -21,6 +21,10 @@ describe('validate', () => {
     expect(result).to.equal('17 Jan 2016');
   })
 
+  it('should validate ID Number and return 17 Apr 1939', () => {
+    const result = getDOB('3904176943181', 90)
+    expect(result).to.equal('17 Apr 1939');
+  })
 
   it('should validate ID Number and return Invalid ID', () => {
     const result = getDOB(invalidID)

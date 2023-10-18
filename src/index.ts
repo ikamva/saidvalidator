@@ -63,12 +63,12 @@ const getGender = (idNumber: string) => {
  * Determine the gender based on the G digit of the ID number
  * DD-MM-YYYY
  * @param idNumber
- * @param range years from current year default 100 years
+ * @param range years from current year default 90 years
  */
-const getDOB = (idNumber: string, range = 100) => {
+const getDOB = (idNumber: string, range = 90) => {
   if (!isSAID(idNumber)) return 'Invalid ID'
   let century = 1900;
-  const currentYear = new Date().getFullYear() % range;
+  const currentYear = Number((new Date().getFullYear() - range).toString().slice(2));
   const year = Number(idNumber.slice(0, 2));
   const month = idNumber.slice(2, 4);
   const day = idNumber.slice(4, 6);
